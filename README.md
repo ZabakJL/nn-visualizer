@@ -19,7 +19,7 @@
 You can install directly from GitHub:
 
 ```bash
-pip install git+https://github.com/yourusername/nn-visualizer.git
+pip install git+https://github.com/ZabakJL/nn-visualizer.git 
 ```
 
 Or, if you cloned this repository:
