@@ -137,14 +137,14 @@ def draw_feedforward_network(layer_sizes, layer_infos=None, orientation="horizon
             if layer_idx == 0:
                 if orientation.lower() in ["vertical", "v"]:
                     ax.annotate(f'$x_{{{i+1}}}$', xy=(x, y + node_radius), xytext=(x, y + 0.9),
-                                arrowprops=dict(arrowstyle='->'), ha='center', va='bottom', fontsize=10)
+                                arrowprops=dict(arrowstyle='->', lw=0.8), ha='center', va='bottom', fontsize=10)
                 else:
                     ax.annotate(f'$x_{{{i+1}}}$', xy=(x - node_radius, y), xytext=(x - 0.9, y),
-                                arrowprops=dict(arrowstyle='->'), ha='right', va='center', fontsize=10)
+                                arrowprops=dict(arrowstyle='->', lw=0.8), ha='right', va='center', fontsize=10)
             if layer_idx == len(layer_sizes) - 1:
                 if orientation.lower() in ["vertical", "v"]:
                     ax.annotate(f'$y_{{{i+1}}}$', xy=(x, y - node_radius - 0.05), xytext=(x, y - 0.9),
-                                arrowprops=dict(arrowstyle='<-', lw=0.8), ha='center', va='top', fontsize=10)
+                                arrowprops=dict(arrowstyle='<-', lw=1.0), ha='center', va='top', fontsize=10)
                 else:
                     ax.annotate(f'$y_{{{i+1}}}$', xy=(x + node_radius + 0.1, y), xytext=(x + node_radius + 0.5, y),
                                 arrowprops=dict(arrowstyle='<-', lw=0.8), ha='left', va='center', fontsize=10)

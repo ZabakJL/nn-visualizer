@@ -1,43 +1,40 @@
 # Neural Network Visualizer
 
-**Neural Network Visualizer** is a simple and customizable tool to visualize feedforward neural networks built with Keras `Sequential` models. It helps understand the model architecture by plotting neurons, layers, and connections in either **horizontal (left-to-right)** or **vertical (top-down)** orientation.
+A lightweight and flexible visualizer for Keras feedforward neural networks. This tool generates clean and intuitive diagrams (both horizontal and vertical) showing the architecture of your model, including:
 
----
-
-## ✨ Features
-
-- Visualizes number of neurons per layer  
-- Differentiates input, hidden, and output layers with color coding  
-- Annotates each neuron with its ID  
-- Displays model information such as layer name, input/output shape, and number of parameters  
-- Supports both horizontal and vertical diagrams  
+- Number of neurons per layer
+- Layer type (input, hidden, output)
+- Technical information per layer (name, input/output shape, parameters)
+- Activation functions (if defined)
 
 ---
 
 ## 📦 Installation
 
-You can install directly from GitHub:
+You can install this module directly from GitHub:
 
 ```bash
-pip install git+https://github.com/ZabakJL/nn-visualizer.git 
+pip install git+https://github.com/ZabakJL/nn-visualizer.git
 ```
 
-Or, if you cloned this repository:
+Or clone the repo and install it manually:
 
 ```bash
+git clone https://github.com/ZabakJL/nn-visualizer.git
 cd nn-visualizer
-pip install -e .
+pip install .
 ```
 
 ---
 
-## 🧠 Example Usage
+## 🚀 Usage
 
 ```python
+from nn_visualizer import plot_neural_network
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Input
-from nn_visualizer import plot_neural_network
 
+# Define model
 model = Sequential([
     Input(shape=(8,)),
     Dense(12, activation='relu'),
@@ -45,23 +42,74 @@ model = Sequential([
     Dense(1, activation='sigmoid')
 ])
 
-plot_neural_network(model, orientation='horizontal')  # or 'vertical'
+# Plot architecture (vertical or horizontal)
+plot_neural_network(model, orientation="vertical")
+plot_neural_network(model, orientation="horizontal")
 ```
 
 ---
 
-## 📁 Repository Structure
+## 🖼️ Output Example
 
-```
-nn-visualizer/
-├── nn_visualizer/
-│   └── __init__.py
-├── setup.py
-└── README.md
+The visualizer generates a plot like this:
+
+- Nodes for each neuron
+- Layer-specific color backgrounds
+- Arrows for inputs/outputs
+- Layer info block with input/output shape, parameter count, and activation
+
+---
+
+## ✨ Features
+
+- Orientation: horizontal or vertical
+- Automatic layout scaling
+- Color-coded layer blocks
+- Annotation of activation functions and technical info
+- Ready for Jupyter notebooks or saving as images
+
+---
+
+## 🛠️ Requirements
+
+- Python 3.7+
+- TensorFlow (for `keras.models`)
+- Matplotlib
+
+---
+
+## 📦 Versiones
+
+### v1.0.0 – Primera versión estable
+
+Esta versión introduce la funcionalidad principal del módulo `nn_visualizer`, permitiendo visualizar modelos `Sequential` de Keras como diagramas de red neuronal con información técnica por capa.
+
+#### Características destacadas:
+- Soporte para orientación **horizontal** (izquierda a derecha) y **vertical** (arriba a abajo).
+- Visualización de:
+  - Número de neurona por nodo
+  - Etiquetas de entrada `xᵢ` y salida `yᵢ` con flechas
+  - Información técnica por capa:
+    - Nombre de la capa
+    - Tipo de capa
+    - Forma de entrada y salida
+    - Número de parámetros
+    - Función de activación (si está definida)
+- Colores diferenciados por tipo de capa: entrada, oculta, salida.
+- Ajuste automático del tamaño de la figura según el modelo.
+
+#### Ejemplo de uso:
+```python
+from nn_visualizer import plot_neural_network
+
+plot_neural_network(model, orientation="v")  # Vertical
+plot_neural_network(model, orientation="h")  # Horizontal
 ```
 
 ---
 
 ## 📄 License
 
-This project is open source and free to use under the MIT License.
+This project is licensed under the MIT License.
+
+Created with 💡 by [ZabakJL](https://github.com/ZabakJL)
