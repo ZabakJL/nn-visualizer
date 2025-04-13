@@ -11,18 +11,22 @@ A lightweight and flexible visualizer for Keras feedforward neural networks. Thi
 
 ## 📦 Installation
 
-You can install this module directly from GitHub:
+You can install this module directly from GitHub.
+
+### 🔖 Latest tagged version (`v0.1.0-beta`)
 
 ```bash
-pip install git+https://github.com/ZabakJL/nn-visualizer.git
+pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.1.0-beta
 ```
 
-Or clone the repo and install it manually:
+> This version is a beta release intended for testing and feedback.
+
+### 🛠 Manual installation (editable mode)
 
 ```bash
 git clone https://github.com/ZabakJL/nn-visualizer.git
 cd nn-visualizer
-pip install .
+pip install -e .
 ```
 
 ---
@@ -60,51 +64,29 @@ The visualizer generates a plot like this:
 
 ---
 
-## ✨ Features
-
-- Orientation: horizontal or vertical
-- Automatic layout scaling
-- Color-coded layer blocks
-- Annotation of activation functions and technical info
-- Ready for Jupyter notebooks or saving as images
-
----
-
-## 🛠️ Requirements
-
-- Python 3.7+
-- TensorFlow (for `keras.models`)
-- Matplotlib
-
----
-
 ## 📦 Versiones
 
-### v1.0.0 – Primera versión estable
+### v0.1.0-beta – Versión de prueba
 
-Esta versión introduce la funcionalidad principal del módulo `nn_visualizer`, permitiendo visualizar modelos `Sequential` de Keras como diagramas de red neuronal con información técnica por capa.
+Esta es la primera versión de prueba del módulo `nn_visualizer`, pensada para exploración y retroalimentación.
 
-#### Características destacadas:
+#### Características incluidas:
 - Soporte para orientación **horizontal** (izquierda a derecha) y **vertical** (arriba a abajo).
 - Visualización de:
-  - Número de neurona por nodo
-  - Etiquetas de entrada `xᵢ` y salida `yᵢ` con flechas
-  - Información técnica por capa:
+  - Nodos numerados
+  - Flechas de entrada (`xᵢ`) y salida (`yᵢ`)
+  - Información técnica de cada capa:
     - Nombre de la capa
-    - Tipo de capa
+    - Tipo
     - Forma de entrada y salida
     - Número de parámetros
     - Función de activación (si está definida)
-- Colores diferenciados por tipo de capa: entrada, oculta, salida.
-- Ajuste automático del tamaño de la figura según el modelo.
+- Ajuste automático del tamaño de la figura.
+- Colores diferenciados para capas de entrada, ocultas y salida.
 
-#### Ejemplo de uso:
-```python
-from nn_visualizer import plot_neural_network
+---
 
-plot_neural_network(model, orientation="v")  # Vertical
-plot_neural_network(model, orientation="h")  # Horizontal
-```
+> ⚠️ Esta es una versión beta. Puede estar sujeta a cambios antes del primer release estable.
 
 ---
 
