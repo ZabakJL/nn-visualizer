@@ -55,7 +55,8 @@ def extract_layer_sizes_from_model(model):
                 "type": layer.__class__.__name__,
                 "input_shape": input_shape,
                 "output_shape": output_shape,
-                "params": layer.count_params()
+                "params": layer.count_params(), 
+                "activation": layer.activation.__name__ 
             }
 
             layer_infos.append(info)
@@ -179,7 +180,8 @@ def draw_feedforward_network(layer_sizes, layer_infos=None, orientation="horizon
             info = (f"{info_dict['name']} ({info_dict['type']})\n"
                     f"In: {info_dict['input_shape']}\n"
                     f"Out: {info_dict['output_shape']}\n"
-                    f"Params: {info_dict['params']}")
+                    f"Params: {info_dict['params']}\n"
+                    f"Act: {info_dict['activation']}")
             if orientation.lower() in ["vertical", "v"]:
                 ax.text(x0 + box_width + 0.3, y, info, ha='left', va='center', fontsize=8, family='monospace')
             else:
