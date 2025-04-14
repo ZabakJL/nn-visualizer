@@ -41,14 +41,19 @@ from tensorflow.keras.layers import Dense, Input
 # Define model
 model = Sequential([
     Input(shape=(8,)),
-    Dense(12, activation='relu'),
-    Dense(8, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(128, activation='relu'),
     Dense(1, activation='sigmoid')
 ])
 
-# Plot architecture (vertical or horizontal)
-plot_neural_network(model, orientation="vertical")
-plot_neural_network(model, orientation="horizontal")
+# Plot architecture with options
+plot_neural_network(
+    model,
+    orientation="horizontal",        # or "vertical"
+    summarized=True,                 # show condensed neuron layout
+    max_neurons_display=19,          # max neurons per layer to display
+    show_layer_info=True             # show technical layer metadata
+)
 ```
 
 ---
