@@ -31,6 +31,11 @@ def draw_feedforward_network(
     """
     colors = get_colors_by_layer_type()
     n_layers = len(layer_sizes)
+    
+    def make_odd(n):
+        return n + 1 if n % 2 == 0 else n
+
+    max_neurons_display = make_odd(max_neurons_display)
     max_neurons = min(max(layer_sizes), max_neurons_display) if summarized else max(layer_sizes)
     
     h_spacing = 3.0
@@ -63,16 +68,13 @@ def draw_feedforward_network(
             x = layer_idx * h_spacing
             y_positions = [0] if neuron_n == 1 else [-i * v_spacing + (neuron_n - 1) * v_spacing / 2 for i in range(neuron_n)]
 
-        #neuron_n = min(max_neurons_display, layer_size) if summarized and max_neurons_display < layer_size else layer_size
-        #final_neuron_id = neuron_id + layer_size
-
         if summarized and max_neurons_display < layer_size:
             half = neuron_n // 2
             neuron_txt = [str(n) for n in range(neuron_id, neuron_id + half)] + ["..."] + \
                  [str(n) for n in range(neuron_id + layer_size - half, neuron_id + layer_size)]
         else:
             neuron_txt = [str(n) for n in range(neuron_id, neuron_id + layer_size)]
-        
+
         for i in range(neuron_n):
             if orientation.lower() in ["vertical", "v"]:
                 x = x_positions[i]
@@ -161,99 +163,6 @@ def draw_feedforward_network(
     ax.set_aspect('equal')
     plt.subplots_adjust(top=0.92, bottom=0.08)
     plt.show()
-
-
-
-def plot_neural_network(
-    model,
-    orientation="vertical",
-    summarized=True,
-    max_neurons_display=19,
-    show_layer_info=True
-):
-    """
-    Plots a feedforward neural network diagram from a Keras sequential model.
-
-    Parameters:
-    -----------
-    model : keras.Model
-        A sequential Keras model to be visualized.
-    orientation : str, default="horizontal"
-        Layout direction of the network: "horizontal" or "vertical".
-    summarized : bool, default=True
-        Whether to limit the number of neurons drawn per layer.
-    max_neurons_display : int, default=19
-        Maximum number of neurons to display in each layer.
-    show_layer_info : bool, default=True
-        Whether to display technical layer information.
-    """
-    layer_sizes, layer_infos = extract_layer_sizes_from_model(model)
-    draw_feedforward_network(
-        layer_sizes,
-        layer_infos,
-        orientation=orientation,
-        summarized=summarized,
-        max_neurons_display=max_neurons_display,
-        show_layer_info=show_layer_info
-    )
-def get_colors_by_layer_type():
-    return {
-        "input":  {"fill": "#27ae60", "box": "#d4efdf"},
-        "hidden": {"fill": "#2e86c1", "box": "#d4e6f1"},
-        "output": {"fill": "#c0392b", "box": "#f9e1e0"}
-    }
-
-def format_layer_info(info_dict):
-    return (f"{info_dict['name']} ({info_dict['type']})\n"
-            f"In: {info_dict['input_shape']}\n"
-            f"Out: {info_dict['output_shape']}\n"
-            f"Params: {info_dict['params']}\n"
-            f"Act: {info_dict['activation']}")
-
-def extract_layer_sizes_from_model(model):
-    """
-    Extracts the number of neurons per layer and metadata from a Keras Sequential model.
-
-    Returns:
-    --------
-    - layer_sizes: List[int]
-    - layer_infos: List[dict]
-    """
-    layer_sizes = []
-    layer_infos = []
-
-    if not model.built:
-        try:
-            input_dim = model.layers[0].input_shape[-1]
-            model.build(input_shape=(None, input_dim))
-        except Exception as e:
-            raise RuntimeError("Model must be built or compiled first.") from e
-
-    input_dim = model.input_shape[-1]
-    layer_sizes.append(input_dim)
-
-    for layer in model.layers:
-        if isinstance(layer, Dense):
-            layer_sizes.append(layer.units)
-
-            try:
-                input_shape = tuple(layer.input.shape)
-                output_shape = tuple(layer.output.shape)
-            except:
-                input_shape = output_shape = "(unknown)"
-
-            info = {
-                "name": layer.name,
-                "type": layer.__class__.__name__,
-                "input_shape": input_shape,
-                "output_shape": output_shape,
-                "params": layer.count_params(),
-                "activation": layer.activation.__name__
-            }
-
-            layer_infos.append(info)
-
-    return layer_sizes, layer_infos
 
 
 def plot_neural_network(
