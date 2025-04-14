@@ -71,6 +71,16 @@ The visualizer generates a plot like this:
 
 ## 📦 Versiones
 
+### v0.1.2 – Summarized layers and configurable display
+
+- Added support for summarized visualizations of large layers using ellipsis ("...") markers.
+- New arguments in `draw_feedforward_network` and `plot_neural_network`:
+  - `summarized`: toggle compact mode (default: `True`)
+  - `max_neurons_display`: limit number of neurons per layer (default: `19`)
+  - `show_layer_info`: toggle layer metadata display (default: `True`)
+- Improved documentation and parameter forwarding.
+- Backward compatible with earlier usage.
+
 ### v0.1.1 – Modular organization and activation display
 
 - Modularization into `core.py`, `visualizer.py`, and `utils.py`
