@@ -13,13 +13,13 @@ A lightweight and flexible visualizer for Keras feedforward neural networks. Thi
 
 You can install this module directly from GitHub.
 
-### 🔖 Latest tagged version (`v0.1.0-beta`)
+### 🔖 Latest stable version (`v0.1.1`)
 
 ```bash
-pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.1.0-beta
+pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.1.1
 ```
 
-> This version is a beta release intended for testing and feedback.
+> This version is the first modular and semi-stable release including activation function display.
 
 ### 🛠 Manual installation (editable mode)
 
@@ -66,27 +66,18 @@ The visualizer generates a plot like this:
 
 ## 📦 Versiones
 
+### v0.1.1 – Modular organization and activation display
+
+- Modularization into `core.py`, `visualizer.py`, and `utils.py`
+- Added display of layer activation functions
+- Improved labeling and figure scaling
+- Enhanced vertical/horizontal layout support
+
 ### v0.1.0-beta – Versión de prueba
 
-Esta es la primera versión de prueba del módulo `nn_visualizer`, pensada para exploración y retroalimentación.
-
-#### Características incluidas:
-- Soporte para orientación **horizontal** (izquierda a derecha) y **vertical** (arriba a abajo).
-- Visualización de:
-  - Nodos numerados
-  - Flechas de entrada (`xᵢ`) y salida (`yᵢ`)
-  - Información técnica de cada capa:
-    - Nombre de la capa
-    - Tipo
-    - Forma de entrada y salida
-    - Número de parámetros
-    - Función de activación (si está definida)
-- Ajuste automático del tamaño de la figura.
-- Colores diferenciados para capas de entrada, ocultas y salida.
-
----
-
-> ⚠️ Esta es una versión beta. Puede estar sujeta a cambios antes del primer release estable.
+- First beta version with basic horizontal and vertical layout
+- Displays layer names, shapes, parameter counts, and neuron IDs
+- Color-coded background per layer type
 
 ---
 
