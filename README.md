@@ -13,10 +13,10 @@ A lightweight and flexible visualizer for Keras feedforward neural networks. Thi
 
 You can install this module directly from GitHub.
 
-### 🔖 Latest stable version (`v0.1.1`)
+### 🔖 Latest stable version (`v0.2.0`)
 
 ```bash
-pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.1.1
+pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.2.0
 ```
 
 > This version is the first modular and semi-stable release including activation function display.
@@ -41,14 +41,19 @@ from tensorflow.keras.layers import Dense, Input
 # Define model
 model = Sequential([
     Input(shape=(8,)),
-    Dense(12, activation='relu'),
-    Dense(8, activation='relu'),
+    Dense(64, activation='relu'),
+    Dense(128, activation='relu'),
     Dense(1, activation='sigmoid')
 ])
 
-# Plot architecture (vertical or horizontal)
-plot_neural_network(model, orientation="vertical")
-plot_neural_network(model, orientation="horizontal")
+# Plot architecture with options
+plot_neural_network(
+    model,
+    orientation="horizontal",        # or "vertical"
+    summarized=True,                 # show condensed neuron layout
+    max_neurons_display=19,          # max neurons per layer to display
+    show_layer_info=True             # show technical layer metadata
+)
 ```
 
 ---
@@ -65,6 +70,16 @@ The visualizer generates a plot like this:
 ---
 
 ## 📦 Versiones
+
+### v0.2.0 – Summarized layers and configurable display
+
+- Added support for summarized visualizations of large layers using ellipsis ("...") markers.
+- New arguments in `draw_feedforward_network` and `plot_neural_network`:
+  - `summarized`: toggle compact mode (default: `True`)
+  - `max_neurons_display`: limit number of neurons per layer (default: `19`)
+  - `show_layer_info`: toggle layer metadata display (default: `True`)
+- Improved documentation and parameter forwarding.
+- Backward compatible with earlier usage.
 
 ### v0.1.1 – Modular organization and activation display
 
