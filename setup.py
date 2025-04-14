@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="nn_visualizer",
-    version="0.1",
+    version="0.2",
     description="Feedforward Neural Network Visualizer for Keras models",
     author="",
     packages=find_packages(),
