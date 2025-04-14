@@ -13,7 +13,7 @@ A lightweight and flexible visualizer for Keras feedforward neural networks. Thi
 
 You can install this module directly from GitHub.
 
-### 🔖 Latest stable version (`v0.2.1`)
+### 🔖 Latest stable version (`v0.2.0`)
 
 ```bash
 pip install git+https://github.com/ZabakJL/nn-visualizer.git@v0.2.1
@@ -71,7 +71,7 @@ The visualizer generates a plot like this:
 
 ## 📦 Versiones
 
-### v0.2.1 – Summarized layers and configurable display
+### v0.2.0 – Summarized layers and configurable display
 
 - Added support for summarized visualizations of large layers using ellipsis ("...") markers.
 - New arguments in `draw_feedforward_network` and `plot_neural_network`:
