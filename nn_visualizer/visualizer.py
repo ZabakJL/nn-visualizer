@@ -166,6 +166,35 @@ def draw_feedforward_network(
     plt.show()
 
 
-def plot_neural_network(model, orientation="horizontal"):
+def plot_neural_network(
+    model,
+    orientation="vertical",
+    summarized=True,
+    max_neurons_display=19,
+    show_layer_info=True
+):
+    """
+    Plots a feedforward neural network diagram from a Keras sequential model.
+
+    Parameters:
+    -----------
+    model : keras.Model
+        A sequential Keras model to be visualized.
+    orientation : str, default="horizontal"
+        Layout direction of the network: "horizontal" or "vertical".
+    summarized : bool, default=True
+        Whether to limit the number of neurons drawn per layer.
+    max_neurons_display : int, default=19
+        Maximum number of neurons to display in each layer.
+    show_layer_info : bool, default=True
+        Whether to display technical layer information.
+    """
     layer_sizes, layer_infos = extract_layer_sizes_from_model(model)
-    draw_feedforward_network(layer_sizes, layer_infos, orientation=orientation)
+    draw_feedforward_network(
+        layer_sizes,
+        layer_infos,
+        orientation=orientation,
+        summarized=summarized,
+        max_neurons_display=max_neurons_display,
+        show_layer_info=show_layer_info
+    )
