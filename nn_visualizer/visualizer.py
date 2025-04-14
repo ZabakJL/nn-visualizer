@@ -3,7 +3,7 @@ import matplotlib.patches as patches
 from .core import extract_layer_sizes_from_model
 from .utils import get_colors_by_layer_type, format_layer_info
 
-ddef draw_feedforward_network(
+def draw_feedforward_network(
     layer_sizes,
     layer_infos=None,
     orientation="vertical",
