@@ -11,7 +11,7 @@ setup(
     name="nn_visualizer",
     version="0.1",
     description="Feedforward Neural Network Visualizer for Keras models",
-    author="TuNombre",
+    author="",
     packages=find_packages(),
     install_requires=[
         "matplotlib",
